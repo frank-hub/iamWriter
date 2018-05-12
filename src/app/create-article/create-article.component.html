@@ -1,0 +1,240 @@
+<!--Main Navigation-->
+<header>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container-fluid">
+
+      <!-- Brand -->
+      <a class="navbar-brand waves-effect" href="/dashboard">
+        <strong class="blue-text">Iam A Writer</strong>
+      </a>
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link waves-effect" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About MDB</a>
+          </li>
+           -->
+        </ul>
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          <li class="nav-item">
+            <a href="https://www.facebook.com/" class="nav-link waves-effect" target="_blank">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://twitter.com/" class="nav-link waves-effect" target="_blank">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+              target="_blank">
+              <i class="fa fa-github mr-2"></i>MDB GitHub
+            </a>
+          </li> -->
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Sidebar -->
+  <div class="sidebar-fixed position-fixed">
+
+    <a class="logo-wrapper waves-effect">
+      <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="">
+    </a>
+
+    <div class="list-group list-group-flush">
+      <a routerLink="/admin" class="list-group-item waves-effect">
+        <i class="fa fa-pie-chart mr-3"></i>Dashboard
+      </a>
+      <a routerLink="/create-article" class="list-group-item list-group-item-action waves-effect active">
+        <i class="fa fa-table mr-3"></i>Create Article</a>
+      <a href="#" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-user mr-3"></i>Profile</a>
+      <a href="#" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-money mr-3"></i>Orders</a>
+    </div>
+
+  </div>
+  <!-- Sidebar -->
+
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main class="pt-5 mx-lg-5">
+  <div class="container-fluid mt-5">
+
+    <!-- Heading -->
+    <div class="card mb-4 wow fadeIn">
+
+      <!--Card content-->
+      <div class="card-body d-sm-flex justify-content-between">
+
+        <h4 class="mb-2 mb-sm-0 pt-1">
+          <a href="" target="_blank">Home Page</a>
+          <span>/</span>
+          <span>Dashboard</span>
+        </h4>
+
+        <form class="d-flex justify-content-center">
+          <!-- Default input -->
+          <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
+          <button class="btn btn-primary btn-sm my-0 p" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+    <!-- Heading -->
+
+    <!--Grid row-->
+    <div class="row wow slideInUp" wow-data-delay="0.6s">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-body">
+              <form>
+                <div class="md-form">
+                   <input type="text" class="form-control" id="heading" mdbActive name="title" [(ngModel)]="article.title" />
+                    <label for="heading">Head Line</label>
+                </div>
+                <!-- <div class="md-form">
+                  <input type="text" class="form-control" id="title" name="title" [(ngModel)]="titles" mdbActive>
+                  <label for="title">Sub Heading</label>
+                </div> -->
+                <!-- <div class="md-form">
+                  <input type="file" class="form-control" mdbActive name="img" [(ngModel)]="imgs">
+                </div> -->
+                <div class="md-form">
+                  <textarea id="content" name="content" [(ngModel)]="article.content">
+
+                  </textarea>
+                  Maximum 400 words
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <button type="submit" class="btn btn-success" value="PUBLISH" (click)="onSubmit()">PUBLISH</button>
+              
+              <div *ngIf= "articles?.length > 0;else noItems">
+                <ul *ngFor= "let article of articles" class="animated bounceIn">
+                  <li><strong>{{article.title }}:</strong>{{article.content | slice : 0 : 10}}...</li>
+                  <li>{{total_article}}</li>
+                </ul>
+              </div>
+              <ng-template #noItems>
+                <hr>
+                <h5>There are no articles to list</h5>
+                <h1></h1>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row wow fadeIn">
+    
+      <div class="col-md-8 mb-4">
+    
+        <!--Card-->
+        <div class="card">
+    
+          <!--Card content-->
+          <div class="card-body">
+    
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead class="blue lighten-4">
+                <tr>
+                  <th>#</th>
+                  <th>Article ID</th>
+                  <th>Article Title</th>
+                  <th>Article Content</th>
+                </tr>
+              </thead>
+              <!-- Table head -->
+    
+              <!-- Table body -->
+              <tbody *ngFor= "let article of articles" class="animated bounceIn">
+                <tr (dblclick)="deleteArticle($event , article)">
+                  <th scope="row">1</th>
+                  <td>{{article.id | slice : 0:4}}</td>
+                  <td>{{article.title}}</td>
+                  <td>{{article.content}}</td>
+                </tr>
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+    
+          </div>
+    
+        </div>
+        <!--/.Card-->
+    
+      </div>
+      <!--Grid column-->
+    
+    </div>
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+  <hr class="my-4">
+
+  <!-- Social icons -->
+  <div class="pb-4">
+    <a href="https://www.facebook.com/" target="_blank">
+      <i class="fa fa-facebook mr-3"></i>
+    </a>
+
+    <a href="https://twitter.com/" target="_blank">
+      <i class="fa fa-twitter mr-3"></i>
+    </a>
+
+    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+      <i class="fa fa-google-plus mr-3"></i>
+    </a>
+    <a href="https://pinterest.com/" target="_blank">
+      <i class="fa fa-pinterest mr-3"></i>
+    </a>
+  </div>
+  <!-- Social icons -->
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2018 Copyright:
+    <a href="https://iamawriter.com/" target="_blank"> Iam A Writer.com </a>
+  </div>
+  <!--/.Copyright-->
+
+</footer>

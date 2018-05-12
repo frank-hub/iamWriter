@@ -1,0 +1,34 @@
+<body style="background-color: rgb(211, 211, 211);padding-bottom: 23%">
+  <div class="flex-center main">
+  
+    <div class="card login" style="background-color: #1E2833">
+      <div class="login card-body">
+        <div class="card-header">
+          <h3 class="h5 text-center mb-4 text-primary">ADMIN LOGIN ONLY</h3>
+        </div>
+        <form (submit)="loginUser()">
+          <div class="md-form">
+            <i class="fa fa-envelope prefix grey-text"></i>
+            <input type="text" id="defaultForm-email" name="email" [(ngModel)]="email" class="white-text form-control" mdbTooltip='{{ email }}'
+              placement="right" mdbActive required>
+            <label for="defaultForm-email">Your email</label>
+          </div>
+  
+          <div class="md-form">
+            <i class="fa fa-lock prefix grey-text"></i>
+            <input type="password" id="defaultForm-pass" name="password" [(ngModel)]="password" class="white-text form-control" mdbTooltip='{{ password }}'
+              placement="right" mdbActive required>
+            <label for="defaultForm-pass">Your password</label>
+          </div>
+  
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary waves-light" mdbRippleRadius>Login User</button>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer text-center">
+        <a id="register" class="light-blue-text">Restricted Zone !!</a>
+      </div>
+    </div>
+  </div>
+</body>

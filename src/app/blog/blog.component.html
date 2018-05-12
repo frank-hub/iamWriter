@@ -1,0 +1,192 @@
+<header>
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" id="nav-color">
+    <logo>
+      <a class="navbar-brand animated fadeInRight " href="#" id="nav-links">Iam A Writer</a>
+    </logo>
+    <links>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link waves-light" href="/" mdbRippleRadius>HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" href="#about" mdbRippleRadius id="nav-links">ABOUT US</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-links" href="#work" mdbRippleRadius>{{"Portfolio"| uppercase}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbRippleRadius id="nav-links">CONTACT US</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link waves-dark" id="nav-links" mdbRippleRadius>THE BLOG
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+        <!-- Dropdown -->
+        <!-- <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbRippleRadius type="button" id="nav-links" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
+            ACCOUNT
+            <span class="caret"></span>
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary " role="menu">
+            <a class="dropdown-item waves-light" mdbRippleRadius href="#" >My Account</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" mdbRippleRadius href="#">Register</a>
+          </div>
+        </li> -->
+
+      </ul>
+    </links>
+
+  </mdb-navbar>
+</header>
+<div class="container">
+  <div class="row">
+  <div class="col-md-9 ">
+<div class="card main-content" *ngFor="let article of articles">
+  <div class="card-title">
+    <h3 class="headline">
+           <strong> {{article.title}}</strong>
+    </h3>
+  </div>
+  <div class="card-image" >
+    <img src="assets/portfolio1.jpeg" alt="" class="img-fluid" >
+  </div>
+  <div class="card-body">
+    <div class="card-content">
+      <p>
+      {{article.content}} 
+      </p>
+    </div>
+  </div>
+</div>
+<!-- <div class="card main-content">
+  <div class="card-title">
+    <h3 class="headline">
+      <strong> When I started writing</strong>
+    </h3>
+  </div>
+  <div class="card-image">
+    <img src="assets/portfolio1.jpeg" alt="" class="img-responsive" style="height: 300px;width: 800px">
+  </div>
+  <div class="card-body">
+    <div class="card-content">
+      <p>
+        
+      </p>
+    </div>
+  </div>
+</div> -->
+  </div>
+<div class="col-md-3 main-content">
+<div class="card" style="margin-right: 5px">
+  <div class="card-header">
+    <h4 style="font-weight: bold;">News Feeds</h4>
+  </div>
+  <div class="card-body">
+    <div *ngFor="let article of (articles | slice : 0 : 3);">
+      <div #main class="card-content">
+        <div class="card-title">
+          <a routerLink="/blog">{{article.title}}</a>
+          <hr class="info-color-dark">
+        </div>
+        <p>
+          {{article.content | slice : 0 : 100}}..
+        </p>
+      </div>
+    </div>
+    <!-- <div class="card-content" >
+        <div class="card-title">
+          <a routerLink="/blog" *ngFor= "let article of articles">{{article.title}}</a>
+          <hr class="info-color-dark">
+        </div>
+
+        <div *ngIf="articles?.length > 0;else noItems">
+          <ul *ngFor="let article of articles">
+            <li>
+              <strong>{{article.title}}:</strong>{{article.content}}</li>
+          </ul>
+        </div>
+        <ng-template #noItems>
+          <hr>
+          <h5>There are no articles to list</h5>
+        </ng-template>
+
+      </div> -->
+  </div>
+  <div class="card-footer">
+    <form method="POST" action="emails.php">
+      <label>Subscribe</label>
+      <div class="input-group">
+        <input class="form-control" type="email" placeholder="Email Address" />
+        <div class="input-group-prepend">
+          <button class="input-group-text btn btn-sm btn-info">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<footer class="page-footer" style="padding-top: 5px">
+  <div class="info-color">
+    <div class="container-fluid container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="center">About Iam A Writer</h3>
+          <hr style="background-color: whitesmoke">
+          <ul class="navbar-nav nav">
+            <li>
+              <a href="/about">Company Information</a>
+            </li>
+            <li>Privacy Policy</li>
+            <li>Terms of use</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Social</h3>
+          <hr style="background-color: whitesmoke">
+          <p> Stay up-to-date through our social media channels:</p>
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a href="https://www.facebook.com/" style="background-color: transparent" class=" waves-effect waves-light">
+                <i class="fa fa-facebook" style="margin-right: 10px"></i>Facebook</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.twitter.com/" style="background-color: transparent" class=" waves-effect waves-light">
+                <i class="fa fa-twitter" style="margin-right: 10px"></i>Twitter</a>
+            </li>
+            <li class="nav-item">
+              <i class="fa fa-instagram" style="margin-right: 10px"></i>Instagram</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Important Links</h3>
+          <hr style="background-color: whitesmoke">
+          <ul>
+            <li>
+              <a href="#!">Products</a>
+            </li>
+            <li>
+              <a href="#!">FAQ</a>
+            </li>
+            <li>
+              <a href="#!">Business Partnerships</a>
+            </li>
+            <li>
+              <a href="#!">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container-fluid info-color-dark">
+      <p>All Rights Reserved |&copy; 2018 | Iam A Writer</p>
+    </div>
+  </div>
+</footer>
